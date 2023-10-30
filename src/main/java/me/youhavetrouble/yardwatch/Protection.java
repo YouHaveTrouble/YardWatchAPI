@@ -1,7 +1,6 @@
 package me.youhavetrouble.yardwatch;
 
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -43,10 +42,10 @@ public interface Protection {
     /**
      * Check if player can interact with specific block
      * @param player player
-     * @param block block to check
+     * @param blockState block to check. This should always be a snapshot and not live object.
      * @return true if player can interact with block, false if not
      */
-    boolean canInteract(Player player, Block block);
+    boolean canInteract(Player player, BlockState blockState);
 
     /**
      * Check if player can interact with specific entity
