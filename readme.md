@@ -11,7 +11,7 @@ If you're looking for a plugin implementing YardWatchAPI for common protection p
 
 ### Import the api using dependency manager
 
-In any case of usage you will need to import the API. Replace `VERSION` with current version tag.
+In any case of usage you will need to import the API. Replace `VERSION` with current version tag. You should also adjust your `<scope>` to `provided` if you're not implementing the api and just querying it.
 
 #### Maven
 ```xml
