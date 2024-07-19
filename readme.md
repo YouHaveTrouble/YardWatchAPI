@@ -15,16 +15,20 @@ In any case of usage you will need to import the API. Replace `VERSION` with cur
 
 #### Maven
 ```xml
-<repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-</repository>
-<dependency>
-    <groupId>com.github.YouHaveTrouble</groupId>
-    <artifactId>YardWatchAPI</artifactId>
-    <version>VERSION</version>
-    <scope>compile</scope>
-</dependency>
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+<dependencies>
+    <dependency>
+        <groupId>com.github.YouHaveTrouble</groupId>
+        <artifactId>YardWatchAPI</artifactId>
+        <version>VERSION</version>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
 ```
 #### Gradle
 ```gradle
@@ -52,7 +56,7 @@ public boolean canBreakBlock(Player player, Block block) {
     Collection<RegisteredServiceProvider<Protection>> protections = servicesManager.getRegistrations(Protection.class);
     for (RegisteredServiceProvider<Protection> protection : protections) {
         if (protection.getProvider().canBreakBlock(player, block.getState(true))) continue;
-            return false; // if any protection plugin disallowed breaking the block, return false
+        return false; // if any protection plugin disallowed breaking the block, return false
         }
     // If all protection plugins allowed breaking the block, return true
     return true;
@@ -60,6 +64,15 @@ public boolean canBreakBlock(Player player, Block block) {
 ```
 
 ## For protection plugins
+
+### Depend on YardWatch plugin
+
+You can optionally softdepend and check if YardWatch is present to add an optional integration.
+
+```yml
+depend:
+  - "YardWatch"
+```
 
 ### Implement Protection interface
 
